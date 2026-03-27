@@ -35,14 +35,14 @@ interface DashboardStat {
 }
 
 const CATEGORY_SHOWCASE_IMAGES: Record<string, string> = {
-    "grocery & staples": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Grocery%20and%20Staples.jpg?alt=media&token=1daa3e6a-c9dd-4e3c-a08d-7f19e4b15757",
-    "beverages": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Beverages.jpg?alt=media&token=6e5c51ab-f609-42a3-9bf7-da0a1d58e224",
-    "dairy & chilled": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Dairy%20and%20Chilled.png?alt=media&token=d6d903bc-26f4-45e3-9677-b8f6abdc1ef3",
-    "fruits & vegetables": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Fruits%20and%20Vegetables.png?alt=media&token=06878dbb-4f4e-4343-8ee9-e536ae16ed63",
-    "meat & seafood": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Meats%20and%20Sea%20Food.png?alt=media&token=3e43298b-e37f-4046-8bfb-38717c7eff1d",
-    "snacks & confectionery": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Snacks.png?alt=media&token=87285335-7b7b-4722-b3ee-5563b4b5aca5",
-    "household & cleaning": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Household%20and%20Cleaning.png?alt=media&token=a9c81360-7508-4b54-8c4d-c9d86191bc4b",
-    "personal care & beauty": "https://firebasestorage.googleapis.com/v0/b/green-cart-9c9ad.firebasestorage.app/o/Personal%20Care%20and%20Beauty.png?alt=media&token=380b4f64-5540-40f2-a545-6d1f35c3dc69",
+    "men's clothing": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80",
+    "women's clothing": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
+    "kids' wear": "https://images.unsplash.com/photo-1519238359922-989348752efb?auto=format&fit=crop&w=1200&q=80",
+    "footwear": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
+    "accessories": "https://images.unsplash.com/photo-1576053139778-7e32f2a7a6ef?auto=format&fit=crop&w=1200&q=80",
+    "sportswear": "https://images.unsplash.com/photo-1518459031867-a89b944bffe4?auto=format&fit=crop&w=1200&q=80",
+    "formal wear": "https://images.unsplash.com/photo-1593032465171-8bd77759d9b0?auto=format&fit=crop&w=1200&q=80",
+    "ethnic wear": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80",
 };
 
 const FALLBACK_CATEGORY_IMAGE = "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=1200&q=80";
@@ -130,7 +130,7 @@ export default function CustomerDashboardPage() {
                 }, {});
                 setCategoryProductCounts(counts);
 
-                const txnId = localStorage.getItem("gc_last_txn_id");
+                const txnId = localStorage.getItem("mn_last_txn_id");
                 if (txnId) {
                     try {
                         const paymentStatus = await apiGetPaymentStatus(txnId);
@@ -444,7 +444,7 @@ export default function CustomerDashboardPage() {
                         {
                             icon: <ShoppingBasket size={18} />,
                             label: "Browse Products",
-                            desc: "Explore active grocery inventory",
+                            desc: "Explore active fashion inventory",
                             href: "/products",
                         },
                         {
@@ -468,7 +468,7 @@ export default function CustomerDashboardPage() {
                         {
                             icon: <Compass size={18} />,
                             label: "Discover Categories",
-                            desc: "Browse by grocery category",
+                            desc: "Browse by fashion category",
                             href: "/products",
                         },
                         {

@@ -59,7 +59,7 @@ export default function LoginPage() {
     return (
         <>
             <h1 className={styles.title}>Welcome back</h1>
-            <p className={styles.subtitle}>Sign in to your Green-Cart account</p>
+            <p className={styles.subtitle}>Sign in to your Monarch account</p>
 
             {error && (
                 <div className={`alert alert-error ${styles.alertBlock}`} role="alert">

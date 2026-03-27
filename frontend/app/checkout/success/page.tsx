@@ -12,7 +12,7 @@ export default function CheckoutSuccessPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const txnId = localStorage.getItem("gc_last_txn_id");
+    const txnId = localStorage.getItem("mn_last_txn_id");
     if (!txnId) {
       setError("No recent transaction found.");
       setLoading(false);

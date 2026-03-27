@@ -13,7 +13,7 @@ import {
 import styles from "./payments.module.css";
 
 function buildOrderId(): string {
-  return `GC-${Date.now()}`;
+  return `MN-${Date.now()}`;
 }
 
 export default function CustomerPaymentsPage() {
@@ -55,7 +55,7 @@ export default function CustomerPaymentsPage() {
         returnUrl: `${typeof globalThis !== "undefined" && globalThis.location ? globalThis.location.origin : "http://localhost:3000"}/checkout/success`,
         items: [
           {
-            name: "Green-Cart checkout items",
+            name: "Monarch checkout items",
             quantity: 1,
             price: amountInLkr,
           },
@@ -63,8 +63,8 @@ export default function CustomerPaymentsPage() {
       });
 
       setPaymentInit(response);
-      localStorage.setItem("gc_last_txn_id", response.transactionId);
-      localStorage.setItem("gc_last_order_id", orderId);
+      localStorage.setItem("mn_last_txn_id", response.transactionId);
+      localStorage.setItem("mn_last_order_id", orderId);
 
       // Send customer to PayHere checkout immediately.
       submitPayHereForm(response.checkoutUrl, response.paymentPayload);
@@ -76,7 +76,7 @@ export default function CustomerPaymentsPage() {
   }
 
   async function handleCheckStatus(): Promise<void> {
-    const txnId = paymentInit?.transactionId ?? localStorage.getItem("gc_last_txn_id");
+    const txnId = paymentInit?.transactionId ?? localStorage.getItem("mn_last_txn_id");
     if (!txnId) {
       setError("No transaction found. Start a payment first.");
       return;
@@ -129,11 +129,11 @@ export default function CustomerPaymentsPage() {
             </div>
             <div className={styles.statusRow}>
               <span className={styles.statusLabel}>Customer</span>
-              <span>{user?.email ?? "customer@greencart.local"}</span>
+              <span>{user?.email ?? "customer@monarch.local"}</span>
             </div>
             <div className={styles.statusRow}>
               <span className={styles.statusLabel}>Items</span>
-              <span>Green-Cart checkout items</span>
+              <span>Monarch checkout items</span>
             </div>
             <div className={styles.statusRow}>
               <span className={styles.statusLabel}>Subtotal</span>
@@ -163,7 +163,7 @@ export default function CustomerPaymentsPage() {
                 className="form-input"
                 value={orderId}
                 onChange={(e) => setOrderId(e.target.value)}
-                placeholder="GC-1234567890"
+                placeholder="MN-1234567890"
               />
             </div>
 

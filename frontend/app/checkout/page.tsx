@@ -190,8 +190,8 @@ export default function CheckoutPage() {
         }))
       });
 
-      localStorage.setItem("gc_last_txn_id", response.transactionId);
-      localStorage.setItem("gc_last_order_id", orderId);
+      localStorage.setItem("mn_last_txn_id", response.transactionId);
+      localStorage.setItem("mn_last_order_id", orderId);
       localStorage.setItem("gc_buy_again_items", JSON.stringify(cart.items.map((item) => item.name)));
       submitPayHereForm(response.checkoutUrl, response.paymentPayload);
     } catch (err) {

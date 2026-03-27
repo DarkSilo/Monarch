@@ -3,10 +3,15 @@ import { InventoryItem } from "@/lib/inventory-api";
 import { ProductFormData } from "../_components/ProductForm";
 
 const CATEGORY_ALIASES: Record<string, string> = {
-    "dairy & beverages": "Dairy & Chilled",
-    "dairy and beverages": "Dairy & Chilled",
-    "daily & beverages": "Dairy & Chilled",
-    "daily and beverages": "Dairy & Chilled"
+    "mens clothing": "Men's Clothing",
+    "men clothing": "Men's Clothing",
+    "women clothing": "Women's Clothing",
+    "womens clothing": "Women's Clothing",
+    "kids wear": "Kids' Wear",
+    "kid's wear": "Kids' Wear",
+    "sports wear": "Sportswear",
+    "formalwear": "Formal Wear",
+    "ethnicwear": "Ethnic Wear"
 };
 
 function normalizeCategoryForForm(value: string | undefined): string {

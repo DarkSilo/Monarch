@@ -136,7 +136,7 @@ export default function RegisterPage() {
     return (
         <>
             <h1 className={styles.title}>Create your account</h1>
-            <p className={styles.subtitle}>Join Green-Cart – fresh produce delivered fast</p>
+            <p className={styles.subtitle}>Join Monarch - premium fashion delivered fast</p>
 
             {error && (
                 <div className={`alert alert-error ${styles.alertBlock}`} role="alert">

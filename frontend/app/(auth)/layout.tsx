@@ -16,7 +16,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
                 <div className={styles.card}>
                     <div className={styles.logo}>
                         <span className={styles.logoIcon}><ShoppingBasket size={20} strokeWidth={2.2} /></span>
-                        <span className={styles.logoText}>Green-Cart</span>
+                        <span className={styles.logoText}>Monarch</span>
                     </div>
                     {children}
                 </div>

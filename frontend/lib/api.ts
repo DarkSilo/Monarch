@@ -23,13 +23,17 @@ export function getServiceBaseUrl(service: ServiceName): string | null {
   // Service to path prefix mapping (used when routing through API Gateway)
   const servicePathMap: Record<ServiceName, string> = {
     authentication: "/auth",
-    inventory: "/inventory"
+    inventory: "/inventory",
+    payment: "/payment",
+    notification: "/notification"
   };
 
   // Try service-specific URL first (for backward compatibility)
   const serviceEnvMap: Record<ServiceName, string | undefined> = {
     authentication: process.env.NEXT_PUBLIC_AUTH_API_URL,
-    inventory: process.env.NEXT_PUBLIC_INVENTORY_API_URL
+    inventory: process.env.NEXT_PUBLIC_INVENTORY_API_URL,
+    payment: process.env.NEXT_PUBLIC_PAYMENT_API_URL,
+    notification: process.env.NEXT_PUBLIC_NOTIFICATION_API_URL
   };
 
   const serviceUrl = serviceEnvMap[service]?.trim();
@@ -95,7 +99,9 @@ export async function apiFetch<T>(
 export async function checkServiceHealth(service: ServiceName): Promise<boolean> {
   const healthPathMap: Record<ServiceName, string> = {
     authentication: "/health/authentication",
-    inventory: "/health/inventory"
+    inventory: "/health/inventory",
+    payment: "/health/payment",
+    notification: "/health/notification"
   };
 
   try {

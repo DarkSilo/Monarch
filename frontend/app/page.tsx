@@ -34,10 +34,10 @@ export default async function Home() {
 
       <section className={styles.heroCommerce}>
         <div className={styles.heroCommerceCopy}>
-          <p className={styles.kicker}>Fresh Deals Live Now</p>
-          <h1>High-quality groceries delivered fast, with a visual-first shopping experience.</h1>
+          <p className={styles.kicker}>New Styles Live Now</p>
+          <h1>Premium fashion delivered fast, with a visual-first shopping experience.</h1>
           <p>
-            Shop produce, pantry items, and home essentials through curated collections,
+            Shop clothing, footwear, and accessories through curated collections,
             smart product search, and a checkout flow designed for conversion.
           </p>
           <div className={styles.heroActions}>
@@ -48,8 +48,8 @@ export default async function Home() {
         <div className={styles.heroCommercePanels}>
           <article className={styles.heroMiniCard}>
             <h3>Top Category</h3>
-            <p>Fresh Produce</p>
-            <span>From LKR 190</span>
+            <p>Streetwear Essentials</p>
+            <span>From LKR 2,490</span>
           </article>
           <article className={styles.heroMiniCard}>
             <h3>Fast Delivery</h3>
@@ -67,9 +67,9 @@ export default async function Home() {
       <section className={styles.seasonalHero}>
         <div className={styles.seasonalOverlay}>
           <p className={styles.kicker}>Seasonal Collection</p>
-          <h2>Fresh from the Farm</h2>
+          <h2>Fresh Looks This Season</h2>
           <p>
-            Handpicked produce, in-season fruits, and kitchen essentials curated for this week.
+            Handpicked fits, in-season trends, and wardrobe essentials curated for this week.
           </p>
           <Link href="/products" className="btn btn-primary btn-sm">Shop Seasonal Picks</Link>
         </div>
@@ -102,7 +102,7 @@ export default async function Home() {
               </div>
               <div className={styles.cardBody}>
                 <h3>{item.name}</h3>
-                <p className={styles.description}>{item.description || "Fresh supermarket item"}</p>
+                <p className={styles.description}>{item.description || "Premium fashion item"}</p>
                 <div className={styles.metaRow}>
                   <span className={styles.price}>{formatCurrency(item.price)}</span>
                   <span className={item.stock > 0 ? styles.stockGood : styles.stockLow}>
@@ -117,7 +117,7 @@ export default async function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <p>© 2026 GreenCart Market</p>
+        <p>© 2026 Monarch</p>
         <div>
           <Link href="/products">Catalog</Link>
           <Link href="/login">Login</Link>

@@ -235,7 +235,7 @@ export function ProductsClient() {
                 </div>
                 <div className={styles.content}>
                   <h2>{item.name}</h2>
-                  <p>{item.description || "Fresh supermarket item"}</p>
+                  <p>{item.description || "Premium fashion item"}</p>
                   <div className={styles.metaRow}>
                     <span className={styles.price}>{formatCurrency(item.price)}</span>
                     <span className={item.stock > 0 ? styles.stockGood : styles.stockLow}>

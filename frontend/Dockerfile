@@ -7,10 +7,11 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts
 
 FROM base AS build
+ARG NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
+ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 COPY --from=deps /app/node_modules ./node_modules
 COPY app ./app
 COPY lib ./lib
-COPY public ./public
 COPY next.config.mjs ./
 COPY next-env.d.ts ./
 COPY tsconfig.json ./
@@ -23,13 +24,12 @@ ENV NODE_ENV=production
 
 RUN addgroup -S app && adduser -S app -G app
 
-COPY --from=build --chown=app:app --chmod=0555 /app/public ./public
 COPY --from=build --chown=app:app --chmod=0555 /app/.next/standalone ./
 COPY --from=build --chown=app:app --chmod=0555 /app/.next/static ./.next/static
 
 # Lock copied artifacts to read/execute only so runtime cannot modify shipped files.
 # Keep a dedicated cache path writable for runtime image optimizations.
-RUN chmod -R a-w ./public ./.next/static ./ \
+RUN chmod -R a-w ./.next/static ./ \
 	&& mkdir -p ./.next/cache \
 	&& chown -R app:app ./.next/cache \
 	&& chmod -R u+w,go-w ./.next/cache

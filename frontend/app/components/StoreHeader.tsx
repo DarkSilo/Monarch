@@ -63,7 +63,7 @@ export default function StoreHeader({ showBackToProducts = false, customLinks = 
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.brand}>GreenCart Market</Link>
+        <Link href="/" className={styles.brand}>Monarch</Link>
 
         <nav className={styles.navDesktop}>
           {showBackToProducts ? <Link href="/products">Back to Products</Link> : null}

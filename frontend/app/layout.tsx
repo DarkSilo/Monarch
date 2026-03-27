@@ -17,8 +17,8 @@ const bitter = Bitter({
 });
 
 export const metadata: Metadata = {
-  title: "Green-Cart – Fresh Groceries Online",
-  description: "Shop fresh groceries and organic produce with Green-Cart. Fast delivery, great prices."
+  title: "Monarch - Premium Clothing Store",
+  description: "Shop premium fashion, apparel, and accessories with Monarch. Fast delivery and secure checkout."
 };
 
 export default function RootLayout({
