@@ -1,9 +1,5 @@
 # Monarch
 
-A modern microservices e-commerce platform for online clothing retail. Built with a scalable architecture featuring independent microservices, centralized API gateway, and responsive Next.js frontend.
-
----
-
 ## Overview
 
 Monarch is an e-commerce platform designed to demonstrate modern microservice architecture principles. The system provides a unified shopping experience through a Next.js frontend while managing distinct business domains (authentication, inventory, payments, notifications) across independent, scalable microservices.
