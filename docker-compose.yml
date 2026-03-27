@@ -1,0 +1,86 @@
+services:
+  # Authentication service (uses MongoDB Atlas)
+  authentication:
+    build:
+      context: ./authentication
+      dockerfile: Dockerfile
+    container_name: monarch-authentication
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    env_file:
+      - ./authentication/.env
+    networks:
+      - monarch-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8081/health/auth"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Inventory service (uses MongoDB Atlas)
+  inventory:
+    build:
+      context: ./inventory
+      dockerfile: Dockerfile
+    container_name: monarch-inventory
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    env_file:
+      - ./inventory/.env
+    networks:
+      - monarch-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8082/health/inventory"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API Gateway (routes requests to auth and inventory services)
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: monarch-api-gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      NODE_ENV: development
+      AUTH_SERVICE_URL: http://authentication:8081
+      INVENTORY_SERVICE_URL: http://inventory:8082
+      FRONTEND_ORIGIN: http://localhost:3000
+    depends_on:
+      - authentication
+      - inventory
+    networks:
+      - monarch-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Frontend service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
+    container_name: monarch-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - api-gateway
+    networks:
+      - monarch-network
+
+networks:
+  monarch-network:
+    driver: bridge
