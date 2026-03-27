@@ -1,7 +1,7 @@
 {
-  "name": "green-cart-api-gateway",
+  "name": "monarch-api-gateway",
   "version": "1.0.0",
-  "description": "API Gateway for Green-Cart microservices",
+  "description": "API Gateway for Monarch microservices",
   "private": true,
   "scripts": {
     "dev": "nodemon src/index.js",

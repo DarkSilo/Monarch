@@ -33,7 +33,7 @@ function buildProxy(target, prefix) {
         const clientIp =
           req.headers['x-forwarded-for'] ?? req.socket?.remoteAddress ?? 'unknown';
         proxyReq.setHeader('X-Forwarded-For', clientIp);
-        proxyReq.setHeader('X-Gateway-Source', 'green-cart-api-gateway');
+        proxyReq.setHeader('X-Gateway-Source', 'monarch-api-gateway');
       },
     },
   });

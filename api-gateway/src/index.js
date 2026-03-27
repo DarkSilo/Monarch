@@ -20,7 +20,7 @@ app.use(loggerMiddleware);
 app.get('/health', (_req, res) => {
   res.status(200).json({
     status:  'ok',
-    service: 'green-cart-api-gateway',
+    service: 'monarch-api-gateway',
     uptime:  Math.floor(process.uptime()),
   });
 });

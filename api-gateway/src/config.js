@@ -33,7 +33,7 @@ const config = {
     inventory: requireEnv('INVENTORY_SERVICE_URL'),
   },
 
-  // Comma-separated list of allowed CORS origins, e.g. "https://green-cart.vercel.app"
+  // Comma-separated list of allowed CORS origins, e.g. "https://monarch.vercel.app"
   corsOrigins: (process.env.FRONTEND_ORIGIN ?? 'http://localhost:3000')
     .split(',')
     .map((o) => o.trim())
