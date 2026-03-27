@@ -1,7 +1,7 @@
 {
-  "name": "green-cart-authentication",
+  "name": "monarch-authentication",
   "version": "1.0.0",
-  "description": "Authentication microservice for Green-Cart",
+  "description": "Authentication microservice for Monarch",
   "private": true,
   "scripts": {
     "dev": "tsx watch src/index.ts",

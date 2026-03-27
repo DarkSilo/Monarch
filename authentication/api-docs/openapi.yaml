@@ -1,17 +1,17 @@
 openapi: 3.1.0
 info:
-  title: Green-Cart Authentication API
+  title: Monarch Authentication API
   version: 1.0.0
   description: |
-    Authentication microservice for Green-Cart. Handles user registration,
+    Authentication microservice for Monarch. Handles user registration,
     login, JWT token lifecycle (access + refresh), and profile retrieval.
   contact:
-    name: Green-Cart CTSE Team
+    name: Monarch MTIT Team
 
 servers:
   - url: http://localhost:8081
     description: Local development
-  - url: https://auth.greencart.example.com
+  - url: https://auth.monarch.example.com
     description: Production (Cloud Run)
 
 tags:
