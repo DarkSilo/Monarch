@@ -5,21 +5,26 @@ import { AppError } from "../errors/AppError";
 import { env } from "../config/env";
 
 const PREDEFINED_CATEGORIES = [
-    "Grocery & Staples",
-    "Beverages",
-    "Dairy & Chilled",
-    "Fruits & Vegetables",
-    "Meat & Seafood",
-    "Snacks & Confectionery",
-    "Household & Cleaning",
-    "Personal Care & Beauty"
+    "Men's Clothing",
+    "Women's Clothing",
+    "Kids' Wear",
+    "Footwear",
+    "Accessories",
+    "Sportswear",
+    "Formal Wear",
+    "Ethnic Wear"
 ] as const;
 
 const CATEGORY_ALIASES: Record<string, (typeof PREDEFINED_CATEGORIES)[number]> = {
-    "dairy & beverages": "Dairy & Chilled",
-    "dairy and beverages": "Dairy & Chilled",
-    "daily & beverages": "Dairy & Chilled",
-    "daily and beverages": "Dairy & Chilled"
+    "mens clothing": "Men's Clothing",
+    "men clothing": "Men's Clothing",
+    "women clothing": "Women's Clothing",
+    "womens clothing": "Women's Clothing",
+    "kids wear": "Kids' Wear",
+    "kid's wear": "Kids' Wear",
+    "sports wear": "Sportswear",
+    "formalwear": "Formal Wear",
+    "ethnicwear": "Ethnic Wear"
 };
 
 export interface CreateItemData {

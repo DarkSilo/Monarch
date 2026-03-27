@@ -1,7 +1,7 @@
 {
-  "name": "green-cart-inventory",
+  "name": "monarch-inventory",
   "version": "1.0.0",
-  "description": "Inventory microservice for Green-Cart",
+  "description": "Inventory microservice for Monarch",
   "private": true,
   "scripts": {
     "dev": "tsx watch src/index.ts",

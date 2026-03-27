@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Green-Cart Inventory Service API
+  title: Monarch Inventory Service API
   version: 1.0.0
   description: Product-focused inventory API for CRUD and stock management.
 servers:
