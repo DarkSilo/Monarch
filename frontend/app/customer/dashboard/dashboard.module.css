@@ -200,16 +200,16 @@
 .tableTitle {
     font-size: 1rem;
     font-weight: 700;
-    color: #1d3627;
+    color: #3a2f22;
     margin: 0;
 }
 
 .tableCard {
-    background: #ffffff;
-    border: 1px solid #dde9df;
+    background: linear-gradient(170deg, #f7f0e4, #eee4d4);
+    border: 1px solid #d3c2aa;
     border-radius: calc(var(--r-lg) - 4px);
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 1px 0 rgba(255, 248, 236, 0.8);
 }
 
 .spotlightGrid {
@@ -367,9 +367,9 @@
 }
 
 .productCard {
-    border: 1px solid #dce8de;
+    border: 1px solid #d3c2a9;
     border-radius: 14px;
-    background: linear-gradient(165deg, #ffffff, #f8fcf9);
+    background: linear-gradient(165deg, #f7efe3, #ece2cf);
     padding: 0.65rem;
     display: flex;
     flex-direction: column;
@@ -382,8 +382,8 @@
     border-radius: 10px;
     overflow: hidden;
     min-height: 128px;
-    background: linear-gradient(145deg, #e9f6ed, #d8eddf);
-    border: 1px solid #d7e6da;
+    background: linear-gradient(145deg, #e8dcc8, #d4c2a3);
+    border: 1px solid #cfbda1;
 }
 
 .productImage {
@@ -397,12 +397,12 @@
     place-items: center;
     font-family: var(--font-display);
     font-size: 2rem;
-    color: #2f6e4b;
+    color: #6a5437;
 }
 
 .productCard:hover {
-    border-color: #c3dbc9;
-    box-shadow: 0 12px 22px rgba(17, 53, 31, 0.09);
+    border-color: #bfa687;
+    box-shadow: 0 12px 22px rgba(33, 26, 18, 0.13);
     transform: translateY(-2px);
 }
 
@@ -413,9 +413,9 @@
 }
 
 .productCategory {
-    background: #ebf7ef;
-    color: #216544;
-    border: 1px solid #cfe6d7;
+    background: #e8decd;
+    color: #5b4931;
+    border: 1px solid #cfb995;
     border-radius: 9999px;
     padding: 0.2rem 0.5rem;
     font-size: 0.7rem;
@@ -423,7 +423,7 @@
 }
 
 .productStock {
-    color: #5a7165;
+    color: #6f624e;
     font-size: 0.72rem;
     font-weight: 600;
 }
@@ -431,14 +431,14 @@
 .productTitle {
     margin: 0;
     font-size: 0.96rem;
-    color: #173523;
+    color: #3b2f22;
     line-height: 1.35;
 }
 
 .productPrice {
     margin: 0;
     font-weight: 800;
-    color: #15552f;
+    color: #2c4029;
     font-size: 1.02rem;
 }
 
@@ -446,7 +446,7 @@
     width: 100%;
     height: 7px;
     border-radius: 9999px;
-    background: #eaf3ec;
+    background: #e6d8c2;
     overflow: hidden;
 }
 
@@ -454,7 +454,7 @@
     display: block;
     height: 100%;
     border-radius: 9999px;
-    background: linear-gradient(90deg, #2ea75e, #5bcf84);
+    background: linear-gradient(90deg, #3e6b4b, #6d8f66);
 }
 
 .productActions {
@@ -468,9 +468,9 @@
 }
 
 .featureCard {
-    border: 1px solid #d7e7dc;
+    border: 1px solid #d2bea3;
     border-radius: var(--r-lg);
-    background: linear-gradient(170deg, #ffffff, #f7fbf8);
+    background: linear-gradient(170deg, #f7efe3, #ece2cf);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -479,17 +479,17 @@
 }
 
 .featureCard:hover {
-    border-color: #bfd7c5;
+    border-color: #bea588;
     transform: translateY(-3px);
-    box-shadow: 0 14px 24px rgba(17, 53, 31, 0.11);
+    box-shadow: 0 14px 24px rgba(33, 26, 18, 0.15);
 }
 
 .featureMedia {
     width: 100%;
     aspect-ratio: 16 / 9;
     position: relative;
-    background: linear-gradient(145deg, #ebf5ee, #d7eadf);
-    border-bottom: 1px solid #d7e7dc;
+    background: linear-gradient(145deg, #e8dcc8, #d4c2a3);
+    border-bottom: 1px solid #cfbda1;
 }
 
 .featureImage {
