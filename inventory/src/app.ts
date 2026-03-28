@@ -1,5 +1,9 @@
 import express from "express";
 import cors from "cors";
+import fs from "fs";
+import path from "path";
+import yaml from "js-yaml";
+import swaggerUi from "swagger-ui-express";
 import { env } from "./config/env";
 import inventoryRouter from "./routes/inventory";
 import { errorHandler } from "./middleware/errorHandler";
@@ -11,6 +15,8 @@ import orderRouter from "./routes/order";
 
 export function createApp() {
     const app = express();
+    const openApiPath = path.resolve(__dirname, "..", "api-docs", "openapi.yaml");
+    const openApiDocument = yaml.load(fs.readFileSync(openApiPath, "utf8")) as Record<string, unknown>;
 
     const allowedOrigins = env.CORS_ORIGINS.split(",").map((o) => o.trim());
     app.use(
@@ -27,6 +33,19 @@ export function createApp() {
     app.get("/health", (_req, res) => {
         res.status(200).json({ status: "ok", service: "inventory" });
     });
+
+    // OpenAPI + Swagger UI
+    app.get("/docs/openapi.json", (_req, res) => {
+        res.status(200).json(openApiDocument);
+    });
+    app.use(
+        "/docs",
+        swaggerUi.serve,
+        swaggerUi.setup(openApiDocument, {
+            explorer: true,
+            customSiteTitle: "Monarch Inventory API Docs"
+        })
+    );
 
     app.use(inventoryRateLimiter);
 

@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info:
+  title: Monarch API Gateway
+  version: 1.0.0
+  description: |
+    Unified API documentation for Monarch microservices through the API gateway.
+    The gateway dynamically merges Authentication and Inventory OpenAPI specs
+    and exposes a single Swagger UI.
+
+servers:
+  - url: http://localhost:8080
+    description: Local gateway
+
+tags:
+  - name: Health
+  - name: Gateway
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Gateway health check
+      responses:
+        "200":
+          description: Healthy gateway
+
+  /docs/services:
+    get:
+      tags: [Gateway]
+      summary: Discover service-level documentation URLs
+      responses:
+        "200":
+          description: Documentation links for all services

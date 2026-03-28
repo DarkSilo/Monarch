@@ -16,7 +16,9 @@
     "express": "4.19.2",
     "helmet": "8.0.0",
     "http-proxy-middleware": "3.0.3",
-    "morgan": "1.10.0"
+    "js-yaml": "4.1.0",
+    "morgan": "1.10.0",
+    "swagger-ui-express": "5.0.1"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "2.1.8",

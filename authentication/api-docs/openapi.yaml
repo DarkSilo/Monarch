@@ -2,43 +2,35 @@ openapi: 3.1.0
 info:
   title: Monarch Authentication API
   version: 1.0.0
-  description: |
-    Authentication microservice for Monarch. Handles user registration,
-    login, JWT token lifecycle (access + refresh), and profile retrieval.
-  contact:
-    name: Monarch MTIT Team
-
+  description: Complete authentication and user management API for Monarch.
 servers:
   - url: http://localhost:8081
-    description: Local development
-  - url: https://auth.monarch.example.com
-    description: Production (Cloud Run)
+    description: Authentication service (direct)
+  - url: http://localhost:8080/auth
+    description: Via API gateway
 
 tags:
-  - name: Auth
-    description: Authentication and token management
   - name: Health
-    description: Service health
+  - name: Auth
+  - name: Admin
 
 paths:
   /health:
     get:
       tags: [Health]
       summary: Health check
-      operationId: healthCheck
       responses:
         "200":
-          description: Service is healthy
+          description: Healthy service
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthResponse"
 
-  /auth/register:
+  /register:
     post:
       tags: [Auth]
       summary: Register a new user
-      operationId: register
       requestBody:
         required: true
         content:
@@ -47,7 +39,7 @@ paths:
               $ref: "#/components/schemas/RegisterRequest"
       responses:
         "201":
-          description: User created successfully
+          description: User registered
           content:
             application/json:
               schema:
@@ -59,11 +51,10 @@ paths:
         "429":
           $ref: "#/components/responses/TooManyRequests"
 
-  /auth/login:
+  /login:
     post:
       tags: [Auth]
-      summary: Login with email and password
-      operationId: login
+      summary: Login and get JWT tokens
       requestBody:
         required: true
         content:
@@ -72,7 +63,7 @@ paths:
               $ref: "#/components/schemas/LoginRequest"
       responses:
         "200":
-          description: Login successful
+          description: Logged in
           content:
             application/json:
               schema:
@@ -84,12 +75,10 @@ paths:
         "429":
           $ref: "#/components/responses/TooManyRequests"
 
-  /auth/refresh:
+  /refresh:
     post:
       tags: [Auth]
       summary: Refresh access token
-      operationId: refreshToken
-      description: Exchange a valid refresh token for a new access token.
       requestBody:
         required: true
         content:
@@ -98,7 +87,7 @@ paths:
               $ref: "#/components/schemas/RefreshRequest"
       responses:
         "200":
-          description: New access token issued
+          description: Access token refreshed
           content:
             application/json:
               schema:
@@ -107,14 +96,11 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "422":
           $ref: "#/components/responses/ValidationError"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
 
-  /auth/logout:
+  /logout:
     post:
       tags: [Auth]
       summary: Logout and invalidate refresh token
-      operationId: logout
       requestBody:
         required: true
         content:
@@ -123,22 +109,19 @@ paths:
               $ref: "#/components/schemas/RefreshRequest"
       responses:
         "204":
-          description: Logged out successfully (refresh token invalidated)
+          description: Logged out
         "422":
           $ref: "#/components/responses/ValidationError"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
 
-  /auth/me:
+  /me:
     get:
       tags: [Auth]
-      summary: Get authenticated user profile
-      operationId: getMe
+      summary: Get current user profile
       security:
         - bearerAuth: []
       responses:
         "200":
-          description: User profile
+          description: Current user
           content:
             application/json:
               schema:
@@ -147,8 +130,133 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
+    patch:
+      tags: [Auth]
+      summary: Update current user profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMeRequest"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MeResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+    delete:
+      tags: [Auth]
+      summary: Delete current user account
+      security:
+        - bearerAuth: []
+      responses:
+        "204":
+          description: Account deleted
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /users:
+    get:
+      tags: [Admin]
+      summary: List all users (admin only)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Users list
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [users]
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+  /users/{id}/role:
+    patch:
+      tags: [Admin]
+      summary: Update user role (admin only)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role:
+                  type: string
+                  enum: [customer, admin]
+      responses:
+        "200":
+          description: User role updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MeResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /users/{id}:
+    delete:
+      tags: [Admin]
+      summary: Delete user (admin only)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: User deleted
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
 
 components:
   securitySchemes:
@@ -180,6 +288,12 @@ components:
           type: string
           format: email
           example: "user@example.com"
+        name:
+          type: string
+          example: "Jane Doe"
+        phone:
+          type: string
+          example: "+1 555 0100"
         role:
           type: string
           enum: [customer, admin]
@@ -193,19 +307,21 @@ components:
 
     RegisterRequest:
       type: object
-      required: [email, password]
+      required: [email, name, phone, password]
       properties:
         email:
           type: string
           format: email
-          example: "user@example.com"
+        name:
+          type: string
+          minLength: 2
+        phone:
+          type: string
+          minLength: 10
         password:
           type: string
           minLength: 8
-          description: |
-            Must contain at least one uppercase letter, one lowercase letter,
-            one digit, and one special character (@$!%*?&).
-          example: "S3cure!Pass"
+          description: Must include uppercase, lowercase, digit, and special character.
 
     LoginRequest:
       type: object
@@ -214,10 +330,8 @@ components:
         email:
           type: string
           format: email
-          example: "user@example.com"
         password:
           type: string
-          example: "S3cure!Pass"
 
     RefreshRequest:
       type: object
@@ -225,7 +339,19 @@ components:
       properties:
         refreshToken:
           type: string
-          example: "eyJhbGciOiJIUzI1NiIs..."
+
+    UpdateMeRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+          minLength: 2
+        phone:
+          type: string
+          minLength: 10
 
     AuthResponse:
       type: object
@@ -235,12 +361,8 @@ components:
           $ref: "#/components/schemas/User"
         accessToken:
           type: string
-          description: Short-lived JWT (15 min)
-          example: "eyJhbGciOiJIUzI1NiIs..."
         refreshToken:
           type: string
-          description: Long-lived JWT (7 days)
-          example: "eyJhbGciOiJIUzI1NiIs..."
 
     RefreshResponse:
       type: object
@@ -248,7 +370,6 @@ components:
       properties:
         accessToken:
           type: string
-          example: "eyJhbGciOiJIUzI1NiIs..."
 
     MeResponse:
       type: object
@@ -263,50 +384,51 @@ components:
       properties:
         error:
           type: string
-          example: "Invalid email or password."
+          example: Invalid request
         code:
           type: string
-          example: "INVALID_CREDENTIALS"
+          example: VALIDATION_ERROR
 
   responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
     Unauthorized:
       description: Authentication required or token invalid
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/ErrorResponse"
-
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
     Conflict:
-      description: Resource already exists
+      description: Resource conflict
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/ErrorResponse"
-
     ValidationError:
-      description: Request body failed validation
+      description: Request failed validation
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/ErrorResponse"
-
     NotFound:
       description: Resource not found
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/ErrorResponse"
-
     TooManyRequests:
       description: Rate limit exceeded
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Too many requests from this IP. Please try again later."
-              code:
-                type: string
-                example: "RATE_LIMITED"
+            $ref: "#/components/schemas/ErrorResponse"

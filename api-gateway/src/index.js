@@ -1,12 +1,15 @@
 'use strict';
 
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
 const config  = require('./config');
+const { buildCombinedOpenApi } = require('./docs/combinedOpenApi');
 const { helmetMiddleware, corsMiddleware } = require('./middleware/security');
 const { loggerMiddleware }                 = require('./middleware/logger');
 const { registerProxyRoutes }              = require('./routes/proxy');
 
 const app = express();
+const openApiDocument = buildCombinedOpenApi();
 
 // ─── Global Middleware ────────────────────────────────────────────────────────
 app.use(helmetMiddleware);
@@ -14,6 +17,22 @@ app.use(corsMiddleware);
 // Handle CORS pre-flight on every route
 app.options('*', corsMiddleware);
 app.use(loggerMiddleware);
+
+// ─── API Documentation ───────────────────────────────────────────────────────
+app.get('/docs/services', (_req, res) => {
+  res.status(200).json({
+    gateway: '/docs',
+    auth: `${config.services.auth}/docs`,
+    inventory: `${config.services.inventory}/docs`,
+  });
+});
+app.get('/docs/openapi.json', (_req, res) => {
+  res.status(200).json(openApiDocument);
+});
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
+  explorer: true,
+  customSiteTitle: 'Monarch API Gateway Docs',
+}));
 
 // ─── Health Check ─────────────────────────────────────────────────────────────
 // Exposed at /health so Cloud Run can verify the container is alive.

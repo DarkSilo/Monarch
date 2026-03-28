@@ -70,10 +70,19 @@ See each service's `package.json` for available npm scripts.
 
 ## API Documentation
 
-Each service includes OpenAPI/Swagger documentation:
+Use the single gateway Swagger UI to browse all API functionality in one place:
 
-- **Authentication**: [authentication/api-docs/openapi.yaml](authentication/api-docs/openapi.yaml)
-- **Inventory**: [inventory/api-docs/openapi.yaml](inventory/api-docs/openapi.yaml)
+- **Unified Swagger UI (all services)**: http://localhost:8080/docs
+
+Additional endpoints:
+
+- **Gateway OpenAPI JSON**: http://localhost:8080/docs/openapi.json
+- **Gateway Docs Discovery**: http://localhost:8080/docs/services
+- **Authentication Swagger UI**: http://localhost:8081/docs
+- **Authentication OpenAPI Source**: [authentication/api-docs/openapi.yaml](authentication/api-docs/openapi.yaml)
+- **Inventory Swagger UI**: http://localhost:8082/docs
+- **Inventory OpenAPI Source**: [inventory/api-docs/openapi.yaml](inventory/api-docs/openapi.yaml)
+
 
 ## License
 
