@@ -18,7 +18,10 @@ const bitter = Bitter({
 
 export const metadata: Metadata = {
   title: "Monarch - Premium Clothing Store",
-  description: "Shop premium fashion, apparel, and accessories with Monarch. Fast delivery and secure checkout."
+  description: "Shop premium fashion, apparel, and accessories with Monarch. Fast delivery and secure checkout.",
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 export default function RootLayout({

@@ -12,6 +12,8 @@ ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 COPY --from=deps /app/node_modules ./node_modules
 COPY app ./app
 COPY lib ./lib
+COPY public ./public
+COPY middleware.ts ./
 COPY next.config.mjs ./
 COPY next-env.d.ts ./
 COPY tsconfig.json ./
@@ -26,10 +28,12 @@ RUN addgroup -S app && adduser -S app -G app
 
 COPY --from=build --chown=app:app --chmod=0555 /app/.next/standalone ./
 COPY --from=build --chown=app:app --chmod=0555 /app/.next/static ./.next/static
+COPY --from=build --chown=app:app /app/public ./public
 
 # Lock copied artifacts to read/execute only so runtime cannot modify shipped files.
 # Keep a dedicated cache path writable for runtime image optimizations.
-RUN chmod -R a-w ./.next/static ./ \
+# Exclude public folder from write restrictions so static assets are accessible.
+RUN chmod -R a-w ./.next/static \
 	&& mkdir -p ./.next/cache \
 	&& chown -R app:app ./.next/cache \
 	&& chmod -R u+w,go-w ./.next/cache

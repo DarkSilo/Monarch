@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, ShoppingCart, Heart, UserCircle2, X } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
@@ -63,7 +64,18 @@ export default function StoreHeader({ showBackToProducts = false, customLinks = 
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.brand}>Monarch</Link>
+        <Link href="/" className={styles.brand}>
+          <Image 
+            src="/logo.png" 
+            alt="Monarch Logo" 
+            width={40} 
+            height={40}
+            className={styles.logo}
+            priority
+            unoptimized
+          />
+          <span className={styles.brandText}>Monarch</span>
+        </Link>
 
         <nav className={styles.navDesktop}>
           {showBackToProducts ? <Link href="/products">Back to Products</Link> : null}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useAuth } from "@/lib/auth-context";
 import { apiGetPaymentStatus, type PaymentStatusResponse } from "@/lib/payment";
 import { inventoryApi, type InventoryItem } from "@/lib/inventory-api";
+import { getCategoryShowcaseImage } from "@/lib/category-images";
 import {
     Activity,
     ArrowRight,
@@ -32,27 +33,6 @@ interface DashboardStat {
     value: string;
     note: string;
     tone: StatTone;
-}
-
-const CATEGORY_SHOWCASE_IMAGES: Record<string, string> = {
-    "men's clothing": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80",
-    "women's clothing": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-    "kids' wear": "https://images.unsplash.com/photo-1519238359922-989348752efb?auto=format&fit=crop&w=1200&q=80",
-    "footwear": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
-    "accessories": "https://images.unsplash.com/photo-1576053139778-7e32f2a7a6ef?auto=format&fit=crop&w=1200&q=80",
-    "sportswear": "https://images.unsplash.com/photo-1518459031867-a89b944bffe4?auto=format&fit=crop&w=1200&q=80",
-    "formal wear": "https://images.unsplash.com/photo-1593032465171-8bd77759d9b0?auto=format&fit=crop&w=1200&q=80",
-    "ethnic wear": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80",
-};
-
-const FALLBACK_CATEGORY_IMAGE = "https://images.unsplash.com/photo-1543168256-418811576931?auto=format&fit=crop&w=1200&q=80";
-
-function normalizeCategory(value: string): string {
-    return value.trim().toLowerCase();
-}
-
-function getCategoryShowcaseImage(category: string): string {
-    return CATEGORY_SHOWCASE_IMAGES[normalizeCategory(category)] ?? FALLBACK_CATEGORY_IMAGE;
 }
 
 function getPaymentBadgeClass(status: PaymentStatusResponse["status"]): string {
@@ -419,7 +399,7 @@ export default function CustomerDashboardPage() {
                                 className={styles.featureCard}
                             >
                                 <div className={styles.featureMedia}>
-                                    <Image src={entry.image} alt={entry.category} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className={styles.featureImage} />
+                                    <Image src={entry.image} alt={entry.category} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className={styles.featureImage} unoptimized />
                                 </div>
                                 <div className={styles.featureContent}>
                                     <div className={styles.featureTopRow}>

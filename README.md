@@ -75,6 +75,10 @@ Each service includes OpenAPI/Swagger documentation:
 - **Authentication**: [authentication/api-docs/openapi.yaml](authentication/api-docs/openapi.yaml)
 - **Inventory**: [inventory/api-docs/openapi.yaml](inventory/api-docs/openapi.yaml)
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## Tech Stack
 
 **Frontend:**

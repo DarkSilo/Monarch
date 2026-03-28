@@ -12,7 +12,8 @@ const PREDEFINED_CATEGORIES = [
     "Accessories",
     "Sportswear",
     "Formal Wear",
-    "Ethnic Wear"
+    "Ethnic Wear",
+    "Perfume"
 ] as const;
 
 const CATEGORY_ALIASES: Record<string, (typeof PREDEFINED_CATEGORIES)[number]> = {
@@ -24,7 +25,10 @@ const CATEGORY_ALIASES: Record<string, (typeof PREDEFINED_CATEGORIES)[number]> =
     "kid's wear": "Kids' Wear",
     "sports wear": "Sportswear",
     "formalwear": "Formal Wear",
-    "ethnicwear": "Ethnic Wear"
+    "ethnicwear": "Ethnic Wear",
+    "perfume": "Perfume",
+    "fragrances": "Perfume",
+    "cologne": "Perfume"
 };
 
 export interface CreateItemData {

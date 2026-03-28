@@ -33,10 +33,17 @@ function getAuthHeaders(): HeadersInit {
 }
 
 export async function apiGetCart(): Promise<Cart> {
-  return apiFetch<Cart>("inventory", "/cart", {
-    method: "GET",
-    headers: getAuthHeaders(),
-  });
+  try {
+    return await apiFetch<Cart>("inventory", "/cart", {
+      method: "GET",
+      headers: getAuthHeaders(),
+    });
+  } catch (err) {
+    if (err instanceof Error && err.message.includes("400")) {
+      throw new Error("Failed to load cart. Ensure your session is valid or try logging in again.");
+    }
+    throw err;
+  }
 }
 
 export async function apiAddToCart(itemId: string, quantity: number): Promise<Cart> {
