@@ -27,7 +27,7 @@ export const registerAttemptRateLimiter = rateLimit({
     skip: (req) => req.method === "OPTIONS"
 });
 
-// Login attempts - tracks by IP + email combination, allows more attempts but over longer window
+// Login attempts - tracks by email with store-based IP handling
 export const loginAttemptRateLimiter = rateLimit({
     windowMs: env.LOGIN_RATE_LIMIT_WINDOW_MS,
     max: env.LOGIN_RATE_LIMIT_MAX,
@@ -37,8 +37,8 @@ export const loginAttemptRateLimiter = rateLimit({
     keyGenerator: (req) => {
         // Extract email from request body if available
         const email = typeof req.body?.email === "string" ? req.body.email.trim().toLowerCase() : "";
-        // Use combination of IP and email for better tracking
-        return email && email.length > 0 ? `login:${req.ip}:${email}` : `login:${req.ip}`;
+        // Track by email only to avoid IPv6 issues with custom IP detection
+        return email && email.length > 0 ? `login:${email}` : `login:unknown`;
     },
     message: {
         error: "Too many login attempts. Please try again later.",
