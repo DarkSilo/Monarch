@@ -184,7 +184,7 @@ export default function CustomerDashboardPage() {
         ];
     }, [categoryCount, lastPayment, memberSince, paymentTone, totalItems, user?.email]);
 
-    const firstName = user?.email ? user.email.split("@")[0] : "Customer";
+    const firstName = user?.name ? user.name.split(" ")[0] : "Customer";
     const todayLabel = new Date().toLocaleDateString(undefined, {
         weekday: "short",
         month: "short",

@@ -16,10 +16,10 @@ const STATS = [
 
 const RECENT_USERS = [
     { email: "alice@example.com", role: "customer", joined: "Mar 10, 2026", status: "Active" },
-    { email: "bob@greenmart.io", role: "customer", joined: "Mar 10, 2026", status: "Active" },
-    { email: "charlie@corp.com", role: "admin", joined: "Mar 9, 2026", status: "Active" },
-    { email: "diana@fresh.co", role: "customer", joined: "Mar 8, 2026", status: "Suspended" },
-    { email: "evan@local.net", role: "customer", joined: "Mar 7, 2026", status: "Active" },
+    { email: "bob@monarch.fashion", role: "customer", joined: "Mar 10, 2026", status: "Active" },
+    { email: "charlie@monarch.fashion", role: "admin", joined: "Mar 9, 2026", status: "Active" },
+    { email: "diana@example.com", role: "customer", joined: "Mar 8, 2026", status: "Suspended" },
+    { email: "evan@example.com", role: "customer", joined: "Mar 7, 2026", status: "Active" },
 ];
 
 const SALES_VELOCITY = [
@@ -41,7 +41,7 @@ export default function AdminDashboardPage() {
                 <div>
                     <h1 className={styles.title}>System Overview</h1>
                     <p className={styles.subtitle}>
-                        Logged in as <strong>{user?.email}</strong> · Admin access
+                        Logged in as <strong>{user?.name}</strong> · Admin access
                     </p>
                 </div>
                 <div className={styles.headerActions}>

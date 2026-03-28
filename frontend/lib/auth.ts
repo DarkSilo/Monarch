@@ -10,6 +10,7 @@ import { ApiError, apiFetch } from "./api";
 export interface AuthUser {
   _id: string;
   email: string;
+  name: string;
   phone?: string;
   role: "customer" | "admin";
   createdAt: string;
@@ -33,6 +34,7 @@ export interface AdminUsersResponse {
 
 export interface UpdateMeInput {
   email?: string;
+  name?: string;
   phone?: string;
 }
 
@@ -177,11 +179,11 @@ async function authFetch<T>(
 
 // ─── Auth API calls ────────────────────────────────────────────────────────
 
-export async function apiRegister(email: string, phone: string, password: string): Promise<AuthResponse> {
+export async function apiRegister(email: string, name: string, phone: string, password: string): Promise<AuthResponse> {
   return withRetry(() =>
     authFetch<AuthResponse>("/register", {
       method: "POST",
-      body: JSON.stringify({ email, phone, password })
+      body: JSON.stringify({ email, name, phone, password })
     })
   );
 }

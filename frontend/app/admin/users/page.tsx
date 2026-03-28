@@ -41,6 +41,7 @@ export default function AdminUsersPage() {
         if (!normalized) return users;
 
         return users.filter((u) =>
+            u.name.toLowerCase().includes(normalized) ||
             u.email.toLowerCase().includes(normalized) ||
             (u.phone ?? "").toLowerCase().includes(normalized) ||
             u.role.toLowerCase().includes(normalized)
@@ -60,8 +61,8 @@ export default function AdminUsersPage() {
         }
     }
 
-    async function handleDelete(userId: string, email: string) {
-        const confirmed = window.confirm(`Delete user ${email}? This action cannot be undone.`);
+    async function handleDelete(userId: string, name: string) {
+        const confirmed = window.confirm(`Delete user ${name}? This action cannot be undone.`);
         if (!confirmed) return;
 
         setBusyUserId(userId);
@@ -88,7 +89,7 @@ export default function AdminUsersPage() {
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search by email, phone, or role"
+                    placeholder="Search by name, email, phone, or role"
                 />
             </div>
 
@@ -101,6 +102,7 @@ export default function AdminUsersPage() {
                     <table className={styles.table}>
                         <thead>
                             <tr>
+                                <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Role</th>
@@ -111,7 +113,7 @@ export default function AdminUsersPage() {
                         <tbody>
                             {filteredUsers.length === 0 ? (
                                 <tr>
-                                    <td colSpan={5} className={styles.empty}>No users found.</td>
+                                    <td colSpan={6} className={styles.empty}>No users found.</td>
                                 </tr>
                             ) : (
                                 filteredUsers.map((u) => {
@@ -120,6 +122,7 @@ export default function AdminUsersPage() {
 
                                     return (
                                         <tr key={u._id}>
+                                            <td data-label="Name" className={styles.name}>{u.name}</td>
                                             <td data-label="Email" className={styles.email}>{u.email}</td>
                                             <td data-label="Phone">{u.phone || "-"}</td>
                                             <td data-label="Role">
@@ -142,7 +145,7 @@ export default function AdminUsersPage() {
                                                 <button
                                                     className={styles.deleteBtn}
                                                     disabled={isBusy || isCurrentUser}
-                                                    onClick={() => handleDelete(u._id, u.email)}
+                                                    onClick={() => handleDelete(u._id, u.name)}
                                                     title={isCurrentUser ? "You cannot delete your own account." : "Delete user"}
                                                 >
                                                     Delete

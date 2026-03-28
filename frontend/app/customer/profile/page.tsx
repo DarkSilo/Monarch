@@ -11,6 +11,7 @@ export default function CustomerProfilePage() {
   const { user, updateMe, deleteMe } = useAuth();
 
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -22,6 +23,7 @@ export default function CustomerProfilePage() {
   useEffect(() => {
     if (!user) return;
     setEmail(user.email ?? "");
+    setName(user.name ?? "");
     setPhone(user.phone ?? "");
   }, [user]);
 
@@ -109,9 +111,10 @@ export default function CustomerProfilePage() {
   const hasChanges = useMemo(() => {
     if (!user) return false;
     const currentEmail = user.email ?? "";
+    const currentName = user.name ?? "";
     const currentPhone = user.phone ?? "";
-    return email.trim() !== currentEmail || phone.trim() !== currentPhone;
-  }, [email, phone, user]);
+    return email.trim() !== currentEmail || name.trim() !== currentName || phone.trim() !== currentPhone;
+  }, [email, name, phone, user]);
 
   const joinedDate = useMemo(() => {
     if (!user?.createdAt) return "-";
@@ -127,8 +130,9 @@ export default function CustomerProfilePage() {
     setError(null);
 
     try {
-      const payload: { email?: string; phone?: string } = {};
+      const payload: { email?: string; name?: string; phone?: string } = {};
       if (email.trim() !== user.email) payload.email = email.trim();
+      if (name.trim() !== user.name) payload.name = name.trim();
       if (phone.trim() !== (user.phone ?? "")) payload.phone = phone.trim();
 
       await updateMe(payload);
@@ -197,6 +201,18 @@ export default function CustomerProfilePage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label" htmlFor="profile-name">Full Name</label>
+              <input
+                id="profile-name"
+                type="text"
+                className="form-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
               />
             </div>
 

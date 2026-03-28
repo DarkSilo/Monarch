@@ -95,7 +95,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                     value={formData.name} 
                                     onChange={onFormChange} 
                                     className="form-input" 
-                                    placeholder={getCreatePlaceholder(isCreateMode, "e.g. Organic Avocados")}
+                                    placeholder={getCreatePlaceholder(isCreateMode, "e.g. Premium Cotton T-Shirt")}
                                     autoComplete="off"
                                 />
                             </div>
@@ -125,7 +125,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                     name="sku" 
                                     value={formData.sku} 
                                     onChange={onFormChange} 
-                                    placeholder={getCreatePlaceholder(isCreateMode, "e.g. GC-AVD-001")}
+                                    placeholder={getCreatePlaceholder(isCreateMode, "e.g. MEN-TSHIRT-001")}
                                     disabled={skuDisabled}
                                     className={`form-input ${skuDisabled ? pageStyles.disabledInput : ""}`}
                                     title={skuDisabled ? "SKU cannot be changed" : undefined}
@@ -305,7 +305,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                     value={formData.unit} 
                                     onChange={onFormChange} 
                                     className="form-input"
-                                    placeholder={getCreatePlaceholder(isCreateMode, "e.g. kg, pack, box")}
+                                    placeholder={getCreatePlaceholder(isCreateMode, "e.g. pcs, piece")}
                                 />
                             </div>
                         </div>

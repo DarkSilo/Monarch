@@ -129,7 +129,7 @@ export default function CustomerPaymentsPage() {
             </div>
             <div className={styles.statusRow}>
               <span className={styles.statusLabel}>Customer</span>
-              <span>{user?.email ?? "customer@monarch.local"}</span>
+              <span>{user?.name ?? "Customer"}</span>
             </div>
             <div className={styles.statusRow}>
               <span className={styles.statusLabel}>Items</span>

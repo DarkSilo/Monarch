@@ -68,6 +68,7 @@ function requirementClass(condition: boolean, styles: Record<string, string>): s
 export default function RegisterPage() {
     const { register } = useAuth();
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
@@ -90,6 +91,14 @@ export default function RegisterPage() {
         // Simple email validation without backtracking-prone regex
         if (!isValidEmail(email)) {
             setError("Please enter a valid email address");
+            return;
+        }
+        if (!name.trim()) {
+            setError("Name is required");
+            return;
+        }
+        if (name.trim().length < 2) {
+            setError("Name must be at least 2 characters");
             return;
         }
         if (!phone.trim()) {
@@ -125,7 +134,7 @@ export default function RegisterPage() {
 
         setLoading(true);
         try {
-            await register(email, phone, password);
+            await register(email, name, phone, password);
         } catch (err) {
             setError(err instanceof Error ? err.message : "Registration failed. Please try again.");
         } finally {
@@ -155,6 +164,20 @@ export default function RegisterPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         autoComplete="email"
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label className="form-label" htmlFor="name">Full name</label>
+                    <input
+                        id="name"
+                        type="text"
+                        className="form-input"
+                        placeholder="John Doe"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        autoComplete="name"
                         required
                     />
                 </div>

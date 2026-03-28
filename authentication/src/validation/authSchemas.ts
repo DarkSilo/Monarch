@@ -4,6 +4,7 @@ const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@
 
 export const registerSchema = z.object({
     email: z.string().email("Invalid email address."),
+    name: z.string().min(2, "Name must be at least 2 characters."),
     phone: z.string().regex(/^[\d\s+() -]{10,}$/, "Please enter a valid phone number."),
     password: z
         .string()
@@ -29,8 +30,9 @@ export const updateUserRoleSchema = z.object({
 export const updateMeSchema = z
     .object({
         email: z.string().email("Invalid email address.").optional(),
+        name: z.string().min(2, "Name must be at least 2 characters.").optional(),
         phone: z.string().regex(/^[\d\s+() -]{10,}$/, "Please enter a valid phone number.").optional()
     })
-    .refine((data) => data.email !== undefined || data.phone !== undefined, {
+    .refine((data) => data.email !== undefined || data.name !== undefined || data.phone !== undefined, {
         message: "Provide at least one field to update."
     });

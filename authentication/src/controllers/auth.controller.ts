@@ -40,6 +40,7 @@ export async function register(req: Request, res: Response, next: NextFunction):
 
         const { password } = parseResult.data;
         let email = parseResult.data.email;
+        const name = parseResult.data.name;
         const phone = parseResult.data.phone;
         // Normalize email to catch duplicates reliably (schema also stores lowercase)
         email = email.toLowerCase().trim();
@@ -50,7 +51,7 @@ export async function register(req: Request, res: Response, next: NextFunction):
         }
 
         const passwordHash = await bcrypt.hash(password, BCRYPT_ROUNDS);
-        const user = await User.create({ email, phone, passwordHash });
+        const user = await User.create({ email, name, phone, passwordHash });
 
         // sonarqube:S6670: Using String() conversion for MongoID - it's the idiomatic way
         const accessToken = signAccessToken(String(user._id), user.role);
@@ -242,6 +243,10 @@ export async function updateMe(req: Request, res: Response, next: NextFunction):
                 return next(new AppError("A user with that email already exists.", 409, "EMAIL_TAKEN"));
             }
             user.email = normalizedEmail;
+        }
+
+        if (parseResult.data.name !== undefined) {
+            user.name = parseResult.data.name.trim();
         }
 
         if (parseResult.data.phone !== undefined) {
