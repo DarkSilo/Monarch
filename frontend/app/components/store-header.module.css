@@ -1,10 +1,11 @@
 .header {
   max-width: 1220px;
   margin: 0 auto;
-  border: 1px solid #dce9de;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(8px);
+  border: 1px solid #ccbca4;
+  border-radius: 20px;
+  background: rgba(248, 241, 230, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 26px rgba(32, 27, 21, 0.09);
   position: sticky;
   top: 0.55rem;
   z-index: 80;
@@ -14,14 +15,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.8rem;
-  padding: 0.75rem 0.9rem;
+  gap: 0.9rem;
+  padding: 0.78rem 0.95rem;
 }
 
 .brand {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: #163421;
+  font-size: 1.35rem;
+  color: #302518;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -37,45 +38,53 @@
 
 .brandText {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: #163421;
-  font-weight: 700;
+  font-size: 1.35rem;
+  color: #302518;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .navDesktop {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1.2rem;
 }
 
 .navDesktop a {
-  color: #2e4738;
+  color: #4c4032;
   text-decoration: none;
   font-weight: 650;
-  padding: 0.2rem 0;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color .18s ease, border-color .18s ease;
+}
+
+.navDesktop a:hover {
+  color: #2f2619;
+  border-color: #8f6b3d;
 }
 
 .navDivider {
   width: 1px;
   height: 20px;
-  background: #d7e6db;
+  background: #d4c6b1;
   margin: 0 0.15rem 0 0.35rem;
 }
 
 .active {
-  color: #163421 !important;
-  border-bottom: 2px solid #22c55e;
+  color: #2f2619 !important;
+  border-bottom: 2px solid #8f6b3d;
 }
 
 .navCta {
-  background: #0f172a;
-  color: #fff !important;
+  background: linear-gradient(135deg, #2f3a2f, #232d23);
+  color: #efe3d1 !important;
   border-radius: 9999px;
   padding: 0.46rem 0.9rem;
 }
 
 .signInBtn {
-  color: #1e3a2d;
+  color: #2f2619;
   text-decoration: none;
   font-weight: 700;
 }
@@ -101,10 +110,10 @@
   right: 0;
   top: calc(100% + 0.35rem);
   min-width: 190px;
-  border: 1px solid #dce9de;
+  border: 1px solid #cdbb9f;
   border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 14px 26px rgba(17, 53, 31, 0.16);
+  background: #f6eee1;
+  box-shadow: 0 16px 32px rgba(32, 27, 21, 0.16);
   padding: 0.35rem;
   display: grid;
   gap: 0.2rem;
@@ -114,9 +123,9 @@
 .accountMenu a,
 .accountMenu button {
   border: none;
-  background: #ffffff;
+  background: #f6eee1;
   text-decoration: none;
-  color: #1f3a2b;
+  color: #342b1f;
   font-weight: 650;
   font-family: inherit;
   font-size: 0.98rem;
@@ -129,19 +138,25 @@
 
 .accountMenu a:hover,
 .accountMenu button:hover {
-  background: #f3faf5;
+  background: #ecdfca;
 }
 
 .iconBtn {
   width: 32px;
   height: 32px;
   border-radius: 9999px;
-  border: 1px solid #d6e6da;
-  background: #f5faf6;
-  color: #234334;
+  border: 1px solid #cbb998;
+  background: #eee3cf;
+  color: #3e3122;
   display: grid;
   place-items: center;
   text-decoration: none;
+  transition: transform .16s ease, background .16s ease;
+}
+
+.iconBtn:hover {
+  background: #e3d4bc;
+  transform: translateY(-1px);
 }
 
 .menuBtn {
@@ -149,9 +164,9 @@
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  border: 1px solid #d6e6da;
-  background: #ffffff;
-  color: #234334;
+  border: 1px solid #ccb899;
+  background: #f4ecdf;
+  color: #3d3021;
   cursor: pointer;
 }
 
@@ -181,19 +196,19 @@
   .mobileMenu {
     display: grid;
     gap: 0.2rem;
-    border-top: 1px solid #e2ece5;
+    border-top: 1px solid #d5c7b1;
     padding: 0.5rem;
   }
 
   .mobileMenu a {
     text-decoration: none;
-    color: #1f3a2b;
+    color: #3a3024;
     font-weight: 650;
     padding: 0.48rem 0.5rem;
     border-radius: 9px;
   }
 
   .mobileMenu a:hover {
-    background: #f2faf4;
+    background: #ebdeca;
   }
 }

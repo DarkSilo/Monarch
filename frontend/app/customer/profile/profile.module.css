@@ -5,23 +5,23 @@
 }
 
 .header {
-  background: linear-gradient(125deg, #173524, #1f4a31 48%, #256343);
-  border: 1px solid #2f6c4a;
+  background: linear-gradient(125deg, #3f3529, #4f4638 48%, #5f6a52);
+  border: 1px solid #7a6a53;
   border-radius: var(--r-lg);
   padding: 1.25rem 1.4rem;
-  box-shadow: 0 12px 28px rgba(15, 54, 34, 0.18);
+  box-shadow: 0 12px 28px rgba(33, 26, 18, 0.2);
 }
 
 .title {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #f3fff8;
+  color: #f8efdf;
   margin: 0;
 }
 
 .subtitle {
   margin: 0.3rem 0 0;
-  color: rgba(231, 249, 238, 0.9);
+  color: rgba(240, 225, 202, 0.9);
   font-size: 0.88rem;
 }
 
@@ -36,11 +36,11 @@
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #dce9de;
+  background: #f8f1e4;
+  border: 1px solid #d2c3ad;
   border-radius: var(--r-lg);
   padding: 1rem;
-  box-shadow: 0 10px 22px rgba(17, 53, 31, 0.06);
+  box-shadow: 0 10px 22px rgba(33, 26, 18, 0.08);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
@@ -56,7 +56,7 @@
 .cardHead h2 {
   margin: 0;
   font-size: 1rem;
-  color: #183728;
+  color: #34291d;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -69,9 +69,9 @@
 }
 
 .metaRows {
-  border: 1px solid #e2ece5;
+  border: 1px solid #d8ccb8;
   border-radius: 12px;
-  background: #f8fbf9;
+  background: #f2e8d9;
   padding: 0.6rem 0.7rem;
 }
 
@@ -84,12 +84,12 @@
 }
 
 .metaRow span {
-  color: #61766b;
+  color: #786b58;
   font-size: 0.8rem;
 }
 
 .metaRow strong {
-  color: #1a3a2b;
+  color: #3a2f22;
   font-size: 0.82rem;
   font-weight: 700;
   text-align: right;
@@ -102,38 +102,38 @@
 }
 
 .dangerCard {
-  border-color: #efcaca;
-  background: linear-gradient(165deg, #ffffff, #fff8f8);
+  border-color: #dbb4ac;
+  background: linear-gradient(165deg, #f8f1e4, #f3e1dc);
 }
 
 .dangerText {
   margin: 0;
-  color: #6d5353;
+  color: #74544f;
   font-size: 0.84rem;
   line-height: 1.5;
 }
 
 .savingsBlock {
-  border: 1px solid #dce9de;
+  border: 1px solid #d2c3ad;
   border-radius: 12px;
-  background: linear-gradient(160deg, #f2fbf5, #ffffff);
+  background: linear-gradient(160deg, #f2e8d8, #f8f1e4);
   padding: 0.9rem;
 }
 
 .savingsBlock p {
   margin: 0;
-  color: #5d7267;
+  color: #746754;
   font-size: 0.82rem;
 }
 
 .savingsBlock h3 {
   margin: 0.35rem 0 0.25rem;
-  color: #17613a;
+  color: #6e5231;
   font-size: 1.45rem;
 }
 
 .savingsBlock small {
-  color: #678074;
+  color: #7f715d;
 }
 
 @media (max-width: 900px) {

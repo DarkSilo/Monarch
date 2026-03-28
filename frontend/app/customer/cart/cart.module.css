@@ -7,7 +7,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  color: #173522;
+  color: #34291d;
 }
 
 .alert {
@@ -26,11 +26,11 @@
 }
 
 .itemsCard {
-  border: 1px solid #dce9de;
+  border: 1px solid #d2c3ad;
   border-radius: 12px;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 10px 20px rgba(17, 53, 31, 0.05);
+  background: #f8f1e4;
+  box-shadow: 0 10px 20px rgba(33, 26, 18, 0.08);
 }
 
 .itemRow {
@@ -38,7 +38,7 @@
   gap: 0.9rem;
   align-items: flex-start;
   padding: 1rem;
-  border-bottom: 1px solid #e7f0e9;
+  border-bottom: 1px solid #d8ccb8;
 }
 
 .itemRow:last-child {
@@ -48,8 +48,8 @@
 .itemImage {
   object-fit: cover;
   border-radius: 10px;
-  background: #f7faf8;
-  border: 1px solid #dce9de;
+  background: #f1e8d9;
+  border: 1px solid #d2c3ad;
 }
 
 .itemInfo {
@@ -71,17 +71,17 @@
   margin: 0 0 0.7rem;
   font-size: 1.05rem;
   font-weight: 700;
-  color: #166534;
+  color: #6e5231;
 }
 
 .quantityRow {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  border: 1px solid #dce9de;
+  border: 1px solid #d2c3ad;
   border-radius: 9999px;
   padding: 0.18rem 0.35rem;
-  background: #f9fcfa;
+  background: #f2e8d9;
 }
 
 .quantityValue {
@@ -102,11 +102,11 @@
 .summaryCard {
   position: sticky;
   top: 1rem;
-  border: 1px solid #dce9de;
+  border: 1px solid #d2c3ad;
   border-radius: 12px;
   padding: 1rem;
-  background: #ffffff;
-  box-shadow: 0 12px 24px rgba(17, 53, 31, 0.07);
+  background: #f8f1e4;
+  box-shadow: 0 12px 24px rgba(33, 26, 18, 0.1);
 }
 
 .summaryCard h3 {
@@ -116,14 +116,14 @@
 .summaryRows {
   margin: 1rem 0;
   padding-top: 0.8rem;
-  border-top: 1px solid #e7f0e9;
+  border-top: 1px solid #d8ccb8;
 }
 
 .summaryRow {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.65rem;
-  color: #4d6257;
+  color: #6b5d4a;
 }
 
 .totalRow {
@@ -131,14 +131,14 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 0.8rem;
-  border-top: 2px solid #e7f0e9;
+  border-top: 2px solid #d8ccb8;
   margin-bottom: 1rem;
   font-size: 1.15rem;
   font-weight: 800;
 }
 
 .totalValue {
-  color: #166534;
+  color: #6e5231;
 }
 
 .centerState,

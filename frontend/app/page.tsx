@@ -34,32 +34,32 @@ export default async function Home() {
 
       <section className={styles.heroCommerce}>
         <div className={styles.heroCommerceCopy}>
-          <p className={styles.kicker}>New Styles Live Now</p>
-          <h1>Premium fashion delivered fast, with a visual-first shopping experience.</h1>
+          <p className={styles.kicker}>The House Collection</p>
+          <h1>Timeless tailoring and elevated essentials for modern luxury wardrobes.</h1>
           <p>
-            Shop clothing, footwear, and accessories through curated collections,
-            smart product search, and a checkout flow designed for conversion.
+            Discover refined silhouettes, premium fabrics, and curated seasonal pieces
+            inspired by heritage style and contemporary sophistication.
           </p>
           <div className={styles.heroActions}>
-            <Link href="/products" className="btn btn-primary btn-lg">Shop Collection</Link>
-            <Link href="/customer/dashboard" className="btn btn-secondary btn-lg">Open Dashboard</Link>
+            <Link href="/products" className="btn btn-primary btn-lg">Shop The Edit</Link>
+            <Link href="/customer/dashboard" className="btn btn-secondary btn-lg">View Your Wardrobe</Link>
           </div>
         </div>
         <div className={styles.heroCommercePanels}>
           <article className={styles.heroMiniCard}>
-            <h3>Top Category</h3>
-            <p>Streetwear Essentials</p>
-            <span>From LKR 2,490</span>
+            <h3>Signature Tailoring</h3>
+            <p>Italian wool blazers</p>
+            <span>From USD 190</span>
           </article>
           <article className={styles.heroMiniCard}>
-            <h3>Fast Delivery</h3>
-            <p>Under 90 minutes</p>
-            <span>City-wide</span>
+            <h3>Concierge Delivery</h3>
+            <p>Priority same-day dispatch</p>
+            <span>In selected cities</span>
           </article>
           <article className={styles.heroMiniCard}>
-            <h3>Weekly Savings</h3>
-            <p>Special basket combos</p>
-            <span>Up to 18% off</span>
+            <h3>Private Client Access</h3>
+            <p>Members-only capsule drops</p>
+            <span>Early access every Friday</span>
           </article>
         </div>
       </section>
@@ -67,11 +67,11 @@ export default async function Home() {
       <section className={styles.seasonalHero}>
         <div className={styles.seasonalOverlay}>
           <p className={styles.kicker}>Seasonal Collection</p>
-          <h2>Fresh Looks This Season</h2>
+          <h2>Autumn Atelier 2026</h2>
           <p>
-            Handpicked fits, in-season trends, and wardrobe essentials curated for this week.
+            Hand-finished knits, heritage outerwear, and clean silhouettes selected for a timeless season.
           </p>
-          <Link href="/products" className="btn btn-primary btn-sm">Shop Seasonal Picks</Link>
+          <Link href="/products" className="btn btn-primary btn-sm">Explore The Collection</Link>
         </div>
       </section>
 

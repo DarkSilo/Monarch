@@ -7,11 +7,11 @@
 }
 
 .sectionShell {
-    background: #ffffff;
-    border: 1px solid #dce9de;
+    background: linear-gradient(180deg, #f9f3e9 0%, #f3eadb 100%);
+    border: 1px solid #d2c3ad;
     border-radius: var(--r-lg);
     padding: 1rem;
-    box-shadow: 0 10px 22px rgba(17, 53, 31, .05);
+    box-shadow: 0 10px 22px rgba(33, 26, 18, .08);
     max-width: 100%;
 }
 
@@ -27,14 +27,14 @@
 .sectionTitle {
     font-size: 1rem;
     font-weight: 700;
-    color: #1d3627;
+    color: #352a1e;
     margin: 0;
 }
 
 .sectionSubtle {
     margin: 0;
     font-size: .79rem;
-    color: #667b70;
+    color: #756957;
 }
 
 .header {
@@ -43,23 +43,23 @@
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    background: linear-gradient(125deg, #173524, #1f4a31 48%, #256343);
-    border: 1px solid #2f6c4a;
+    background: linear-gradient(125deg, #3f3529, #4f4638 48%, #5f6a52);
+    border: 1px solid #7a6a53;
     border-radius: var(--r-lg);
     padding: 1.35rem 1.4rem;
-    box-shadow: 0 14px 30px rgba(15, 54, 34, 0.18);
+    box-shadow: 0 14px 30px rgba(33, 26, 18, 0.2);
 }
 
 .title {
     font-size: 1.6rem;
     font-weight: 800;
-    color: #f3fff8;
+    color: #f8efdf;
     margin-bottom: .25rem;
 }
 
 .subtitle {
     font-size: .875rem;
-    color: rgba(231, 249, 238, 0.88);
+    color: rgba(240, 225, 202, 0.88);
     margin: 0;
 }
 
@@ -76,13 +76,13 @@
 }
 
 .darkBtn {
-    background: rgba(255, 255, 255, 0.12) !important;
-    border-color: rgba(226, 249, 234, 0.35) !important;
-    color: #f2fff7 !important;
+    background: rgba(247, 226, 195, 0.14) !important;
+    border-color: rgba(232, 199, 150, 0.36) !important;
+    color: #f6ead7 !important;
 }
 
 .darkBtn:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(247, 226, 195, 0.24) !important;
 }
 
 .statsGrid {
@@ -92,15 +92,15 @@
 }
 
 .chartShell {
-    border: 1px solid #dce9de;
+    border: 1px solid #d5c6b0;
     border-radius: 14px;
-    background: linear-gradient(160deg, #ffffff, #f7fbf8);
+    background: linear-gradient(160deg, #fbf6ed, #f3eadd);
     padding: 0.6rem 0.4rem 0.2rem;
 }
 
 .statCard {
-    background: #ffffff;
-    border: 1px solid #dce9de;
+    background: #f8f1e4;
+    border: 1px solid #d4c5b0;
     border-radius: var(--r-lg);
     padding: 1.25rem 1.5rem;
     display: flex;
@@ -110,8 +110,8 @@
 }
 
 .statCard:hover {
-    border-color: #cfe3d5;
-    box-shadow: 0 8px 22px rgba(17, 53, 31, .08);
+    border-color: #bea789;
+    box-shadow: 0 8px 22px rgba(33, 26, 18, .12);
 }
 
 .statIcon {
@@ -126,14 +126,14 @@
 
 .statLabel {
     font-size: .78rem;
-    color: #667b70;
+    color: #756957;
     font-weight: 500;
 }
 
 .statValue {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #173522;
+    color: #372c20;
     line-height: 1;
 }
 
@@ -147,11 +147,11 @@
 }
 
 .up {
-    color: #1a7a48;
+    color: #566248;
 }
 
 .down {
-    color: #b33434;
+    color: #9a423b;
 }
 
 .tableSection {
@@ -171,13 +171,13 @@
 .tableTitle {
     font-size: 1rem;
     font-weight: 700;
-    color: #1d3627;
+    color: #352a1e;
     margin: 0;
 }
 
 .tableCard {
-    background: #ffffff;
-    border: 1px solid #e2ece5;
+    background: #f8f1e4;
+    border: 1px solid #d8ccb8;
     border-radius: calc(var(--r-lg) - 4px);
     overflow: hidden;
 }
@@ -190,8 +190,8 @@
 }
 
 .table thead tr {
-    background: #f3f8f4;
-    border-bottom: 1px solid #dce9de;
+    background: #efe3cf;
+    border-bottom: 1px solid #d2c3ad;
 }
 
 .table th {
@@ -199,13 +199,13 @@
     padding: .75rem 1rem;
     font-size: .72rem;
     font-weight: 700;
-    color: #667b70;
+    color: #756957;
     text-transform: uppercase;
     letter-spacing: .05em;
 }
 
 .table tbody tr {
-    border-bottom: 1px solid #e5eee8;
+    border-bottom: 1px solid #ddd1bf;
     transition: background .12s;
 }
 
@@ -214,17 +214,17 @@
 }
 
 .table tbody tr:hover {
-    background: #f7fbf8;
+    background: #f1e7d6;
 }
 
 .table td {
     padding: .875rem 1rem;
     vertical-align: middle;
-    color: #4f6458;
+    color: #665948;
 }
 
 .emailCell {
-    color: #173522 !important;
+    color: #34291d !important;
     font-weight: 500;
 }
 
@@ -239,21 +239,21 @@
 }
 
 .darkAction {
-    color: #4b6257 !important;
+    color: #675947 !important;
 }
 
 .darkAction:hover {
-    color: #173522 !important;
-    background: #edf6f0 !important;
+    color: #34291d !important;
+    background: #ece1cd !important;
 }
 
 .dangerAction {
-    color: #b13a3a !important;
+    color: #9a423b !important;
 }
 
 .dangerAction:hover {
     color: #ffffff !important;
-    background: #d74848 !important;
+    background: #8f3934 !important;
 }
 
 .quickGrid {
@@ -263,8 +263,8 @@
 }
 
 .quickCard {
-    background: #ffffff;
-    border: 1px solid #dce9de;
+    background: #f8f1e4;
+    border: 1px solid #d2c3ad;
     border-radius: var(--r-lg);
     padding: 1.25rem;
     display: flex;
@@ -275,9 +275,9 @@
 }
 
 .quickCard:hover {
-    border-color: #cfe3d5;
+    border-color: #bea789;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(17, 53, 31, .08);
+    box-shadow: 0 10px 20px rgba(33, 26, 18, .12);
 }
 
 .quickIcon {
@@ -288,12 +288,12 @@
 .quickLabel {
     font-size: .875rem;
     font-weight: 700;
-    color: #1f3a2b;
+    color: #3c3022;
 }
 
 .quickDesc {
     font-size: .775rem;
-    color: #61766b;
+    color: #776a57;
     margin-top: .1rem;
 }
 
@@ -342,10 +342,10 @@
 
     .table tbody tr {
         display: block;
-        border: 1px solid #dce9de;
+        border: 1px solid #d2c3ad;
         border-radius: var(--r-lg);
-        background: #ffffff;
-        box-shadow: 0 8px 22px rgba(17, 53, 31, .06);
+        background: #f8f1e4;
+        box-shadow: 0 8px 22px rgba(33, 26, 18, .1);
         padding: .5rem .85rem;
     }
 
@@ -363,7 +363,7 @@
 
     .table td::before {
         content: attr(data-label);
-        color: #5d7166;
+        color: #6f624f;
         font-weight: 600;
         text-align: left;
     }

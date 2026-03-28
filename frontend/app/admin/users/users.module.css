@@ -9,26 +9,26 @@
     align-items: flex-end;
     gap: 1rem;
     flex-wrap: wrap;
-    border: 1px solid #dce9de;
+    border: 1px solid #d2c3ad;
     border-radius: 16px;
-    background: #fff;
+    background: #f8f1e4;
     padding: 1rem;
 }
 
 .header h1 {
     margin: 0;
-    color: #15281a;
+    color: #34291d;
     font-size: 1.35rem;
 }
 
 .header p {
     margin: 0.3rem 0 0;
-    color: #4a5f52;
+    color: #6c5f4d;
 }
 
 .search {
     min-width: 280px;
-    border: 1px solid #cfdfd2;
+    border: 1px solid #cdbba0;
     border-radius: 10px;
     padding: 0.6rem 0.8rem;
     font: inherit;
@@ -44,9 +44,9 @@
 }
 
 .tableCard {
-    border: 1px solid #dce9de;
+    border: 1px solid #d2c3ad;
     border-radius: 16px;
-    background: #fff;
+    background: #f8f1e4;
     overflow: hidden;
 }
 
@@ -59,19 +59,19 @@
 .table td {
     text-align: left;
     padding: 0.8rem;
-    border-bottom: 1px solid #e7f0e9;
+    border-bottom: 1px solid #ddd1bf;
 }
 
 .table th {
-    background: #f4faf5;
-    color: #244535;
+    background: #efe3cf;
+    color: #5c4e3a;
     font-weight: 700;
     font-size: 0.88rem;
 }
 
 .email {
     font-weight: 600;
-    color: #1c3527;
+    color: #3b2f22;
 }
 
 .roleBadge {
@@ -83,13 +83,13 @@
 }
 
 .adminBadge {
-    background: #e6efff;
-    color: #1e4e9b;
+    background: #e3ddd2;
+    color: #4b4538;
 }
 
 .customerBadge {
-    background: #e8f9ef;
-    color: #186941;
+    background: #ece2d0;
+    color: #6d5332;
 }
 
 .actions {
@@ -99,17 +99,17 @@
 }
 
 .roleSelect {
-    border: 1px solid #cfdfd2;
+    border: 1px solid #cdbba0;
     border-radius: 9px;
     padding: 0.4rem 0.55rem;
     font: inherit;
-    background: #fff;
+    background: #f8f1e4;
 }
 
 .deleteBtn {
-    border: 1px solid #ebcdcd;
-    background: #fff4f4;
-    color: #9b2828;
+    border: 1px solid #dcb4ac;
+    background: #f3e2dc;
+    color: #8f3934;
     border-radius: 9px;
     padding: 0.4rem 0.65rem;
     cursor: pointer;
@@ -125,7 +125,7 @@
 
 .empty {
     text-align: center;
-    color: #4b6153;
+    color: #6a5c49;
     padding: 1.1rem;
 }
 
@@ -144,7 +144,7 @@
     }
 
     .table tr {
-        border-bottom: 1px solid #e7f0e9;
+        border-bottom: 1px solid #ddd1bf;
         padding: 0.2rem 0;
     }
 
@@ -158,7 +158,7 @@
         display: inline-block;
         width: 86px;
         font-weight: 700;
-        color: #2d4b39;
+        color: #5a4d3a;
     }
 
     .actions {

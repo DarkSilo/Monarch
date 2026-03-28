@@ -4,25 +4,25 @@
 }
 
 .header {
-  border: 1px solid #dce9de;
-  background: #ffffff;
+  border: 1px solid #d2c3ad;
+  background: #f8f1e4;
   border-radius: 16px;
   padding: 1rem;
 }
 
 .header h1 {
   margin: 0;
-  color: #163421;
+  color: #34291d;
 }
 
 .header p {
   margin: 0.3rem 0 0;
-  color: #587063;
+  color: #6b5d4a;
 }
 
 .loading {
-  border: 1px solid #dce9de;
-  background: #ffffff;
+  border: 1px solid #d2c3ad;
+  background: #f8f1e4;
   border-radius: 12px;
   padding: 1rem;
   display: inline-flex;
@@ -37,9 +37,9 @@
 }
 
 .column {
-  border: 1px solid #dce9de;
+  border: 1px solid #d2c3ad;
   border-radius: 12px;
-  background: #f8fcf9;
+  background: #f3eadc;
   padding: 0.65rem;
   display: grid;
   gap: 0.55rem;
@@ -49,13 +49,13 @@
 .column h2 {
   margin: 0;
   font-size: 0.92rem;
-  color: #1a3a2b;
+  color: #3b2f22;
 }
 
 .card {
-  border: 1px solid #dce9de;
+  border: 1px solid #d8ccb8;
   border-radius: 10px;
-  background: #ffffff;
+  background: #f8f1e4;
   padding: 0.65rem;
   display: grid;
   gap: 0.45rem;
@@ -65,7 +65,7 @@
   margin: 0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   font-weight: 700;
-  color: #163421;
+  color: #34291d;
 }
 
 .card p {
@@ -73,7 +73,7 @@
 }
 
 .card small {
-  color: #657b6f;
+  color: #766a57;
 }
 
 .spin {

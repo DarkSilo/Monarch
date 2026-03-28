@@ -1,18 +1,19 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Manrope, Bitter } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap"
 });
 
-const bitter = Bitter({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-display",
+  weight: ["500", "600", "700"],
   display: "swap"
 });
 
@@ -29,7 +30,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${bitter.variable}`}>
+      <body className={`${dmSans.variable} ${cormorant.variable}`}>
         <AuthProvider>
           {children}
         </AuthProvider>
