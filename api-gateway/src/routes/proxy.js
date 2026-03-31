@@ -47,6 +47,8 @@ function buildProxy(target, prefix) {
 function registerProxyRoutes(app) {
   app.use('/auth',      buildProxy(config.services.auth,      '/auth'));
   app.use('/inventory', buildProxy(config.services.inventory, '/inventory'));
+  app.use('/orders',    buildProxy(config.services.orders,    '/orders'));
+  app.use('/notifications', buildProxy(config.services.notifications, '/notifications'));
 }
 
 module.exports = { registerProxyRoutes };

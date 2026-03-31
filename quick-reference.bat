@@ -18,6 +18,8 @@ echo  Services:
 echo    - API Gateway       (port 8080)
 echo    - Authentication    (port 8081) - Requires MongoDB
 echo    - Inventory         (port 8082) - Requires MongoDB
+echo    - Notifications     (port 8083) - Requires MongoDB
+echo    - Orders            (port 8084) - Requires MongoDB
 echo    - Frontend          (port 3000) - Next.js app
 echo.
 echo  Prerequisites:
@@ -203,6 +205,14 @@ if exist "inventory\.env" (
 )
 echo.
 
+echo ─── Notifications (notification-service\.env) ─────────────────────────────
+if exist "notification-service\.env" (
+    type "notification-service\.env"
+) else (
+    echo [File not found]
+)
+echo.
+
 echo ─── Frontend (frontend\.env.local) ────────────────────────────────────────
 if exist "frontend\.env.local" (
     type "frontend\.env.local"
@@ -229,13 +239,15 @@ echo.
 echo  [1] API Gateway (port 8080)
 echo  [2] Authentication (port 8081)
 echo  [3] Inventory (port 8082)
-echo  [4] Frontend (port 3000)
-echo  [5] Back to main menu
+echo  [4] Notifications (port 8083)
+echo  [5] Orders (port 8084)
+echo  [6] Frontend (port 3000)
+echo  [7] Back to main menu
 echo.
 echo ==================================================================================
 echo.
 
-set /p service_choice="Choose service (1-5): "
+set /p service_choice="Choose service (1-7): "
 
 if "%service_choice%"=="1" (
     start "API Gateway" cmd /k "cd /d api-gateway && npm start"
@@ -247,9 +259,15 @@ if "%service_choice%"=="1" (
     start "Inventory" cmd /k "cd /d inventory && npm start"
     echo Started Inventory Service in new window
 ) else if "%service_choice%"=="4" (
+    start "Notifications" cmd /k "cd /d notification-service && npm start"
+    echo Started Notification Service in new window
+) else if "%service_choice%"=="5" (
+    start "Orders" cmd /k "cd /d Order-service\Order-service && npm start"
+    echo Started Orders Service in new window
+) else if "%service_choice%"=="6" (
     start "Frontend" cmd /k "cd /d frontend && npm start"
     echo Started Frontend in new window
-) else if "%service_choice%"=="5" (
+) else if "%service_choice%"=="7" (
     goto menu
 ) else (
     echo Invalid choice.

@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: |
     Unified API documentation for Monarch microservices through the API gateway.
-    The gateway dynamically merges Authentication and Inventory OpenAPI specs
+    The gateway dynamically merges Authentication, Inventory, Order, and Notification OpenAPI specs
     and exposes a single Swagger UI.
 
 servers:

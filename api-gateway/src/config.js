@@ -31,6 +31,8 @@ const config = {
   services: {
     auth:      requireEnv('AUTH_SERVICE_URL'),
     inventory: requireEnv('INVENTORY_SERVICE_URL'),
+    orders:    requireEnv('ORDER_SERVICE_URL'),
+    notifications: requireEnv('NOTIFICATION_SERVICE_URL'),
   },
 
   // Comma-separated list of allowed CORS origins, e.g. "https://monarch.vercel.app"
