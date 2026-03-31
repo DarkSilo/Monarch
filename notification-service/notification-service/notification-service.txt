@@ -1,0 +1,10 @@
+notification-service/
+  rmdir .\package.json
+  server.js.txt
+  .env
+  cd C:\Users\acer\Desktop\notification-service
+Get-ChildItem
+cd C:\Users\acer\Desktop\notification-service
+@'console.log("test server.js");'@ | Set-Content .\server.js -Encoding UTF8
+Get-Item .\server.js | Format-List FullName,Length,PSIsContainer
+

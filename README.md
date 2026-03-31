@@ -65,8 +65,9 @@ See each service's `package.json` for available npm scripts.
 | **API Gateway** | 3000 | Request routing & load balancing |
 | **Authentication** | 3001 | User login, JWT tokens, session management |
 | **Inventory** | 3002 | Products, cart, orders, stock management |
+| **Notification** | 8083 | User notification creation, listing, and read-status management |
+| **Orders** | 8084 | Dedicated order creation, tracking, and lifecycle operations |
 | **Payment** | 3003 | Payment processing, transaction handling |
-| **Notification** | 3004 | Email/SMS notifications, alerts |
 
 ## API Documentation
 
@@ -82,6 +83,10 @@ Additional endpoints:
 - **Authentication OpenAPI Source**: [authentication/api-docs/openapi.yaml](authentication/api-docs/openapi.yaml)
 - **Inventory Swagger UI**: http://localhost:8082/docs
 - **Inventory OpenAPI Source**: [inventory/api-docs/openapi.yaml](inventory/api-docs/openapi.yaml)
+- **Notification Swagger UI**: http://localhost:8083/docs
+- **Notification OpenAPI Source**: [notification-service/api-docs/openapi.yaml](notification-service/api-docs/openapi.yaml)
+- **Order Swagger UI**: http://localhost:8084/docs
+- **Order OpenAPI Source**: [Order-service/Order-service/api-docs/openapi.yaml](Order-service/Order-service/api-docs/openapi.yaml)
 
 
 ## License

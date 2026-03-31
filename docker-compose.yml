@@ -37,7 +37,45 @@ services:
       timeout: 5s
       retries: 5
 
-  # API Gateway (routes requests to auth and inventory services)
+  # Order service (uses MongoDB Atlas)
+  orders:
+    build:
+      context: ./Order-service/Order-service
+      dockerfile: Dockerfile
+    container_name: monarch-orders
+    restart: unless-stopped
+    ports:
+      - "8084:8084"
+    env_file:
+      - ./Order-service/Order-service/.env
+    networks:
+      - monarch-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8084/health/orders"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Notification service (uses MongoDB Atlas)
+  notifications:
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    container_name: monarch-notifications
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    env_file:
+      - ./notification-service/.env
+    networks:
+      - monarch-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8083/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API Gateway (routes requests to auth, inventory, order, and notification services)
   api-gateway:
     build:
       context: ./api-gateway
@@ -51,10 +89,14 @@ services:
       NODE_ENV: development
       AUTH_SERVICE_URL: http://authentication:8081
       INVENTORY_SERVICE_URL: http://inventory:8082
+      ORDER_SERVICE_URL: http://orders:8084
+      NOTIFICATION_SERVICE_URL: http://notifications:8083
       FRONTEND_ORIGIN: http://localhost:3000
     depends_on:
       - authentication
       - inventory
+      - orders
+      - notifications
     networks:
       - monarch-network
     healthcheck:

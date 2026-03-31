@@ -24,6 +24,8 @@ app.get('/docs/services', (_req, res) => {
     gateway: '/docs',
     auth: `${config.services.auth}/docs`,
     inventory: `${config.services.inventory}/docs`,
+    orders: `${config.services.orders}/docs`,
+    notifications: `${config.services.notifications}/docs`,
   });
 });
 app.get('/docs/openapi.json', (_req, res) => {

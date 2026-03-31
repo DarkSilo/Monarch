@@ -75,19 +75,29 @@ function buildCombinedOpenApi() {
   const basePath = path.resolve(__dirname, '..', '..', 'api-docs', 'openapi.yaml');
   const authPath = path.resolve(__dirname, '..', '..', '..', 'authentication', 'api-docs', 'openapi.yaml');
   const inventoryPath = path.resolve(__dirname, '..', '..', '..', 'inventory', 'api-docs', 'openapi.yaml');
+  const orderPath = path.resolve(__dirname, '..', '..', '..', 'Order-service', 'Order-service', 'api-docs', 'openapi.yaml');
+  const notificationPath = path.resolve(__dirname, '..', '..', '..', 'notification-service', 'api-docs', 'openapi.yaml');
 
   const baseDoc = loadYaml(basePath);
   const authDoc = loadYaml(authPath);
   const inventoryDoc = loadYaml(inventoryPath);
+  const orderDoc = loadYaml(orderPath);
+  const notificationDoc = loadYaml(notificationPath);
 
   mergeTags(baseDoc, authDoc);
   mergeTags(baseDoc, inventoryDoc);
+  mergeTags(baseDoc, orderDoc);
+  mergeTags(baseDoc, notificationDoc);
 
   mergeComponents(baseDoc, authDoc);
   mergeComponents(baseDoc, inventoryDoc);
+  mergeComponents(baseDoc, orderDoc);
+  mergeComponents(baseDoc, notificationDoc);
 
   mergePrefixedPaths(baseDoc, authDoc, '/auth');
   mergePrefixedPaths(baseDoc, inventoryDoc, '/inventory');
+  mergePrefixedPaths(baseDoc, orderDoc, '/orders');
+  mergePrefixedPaths(baseDoc, notificationDoc, '/notifications');
 
   return baseDoc;
 }

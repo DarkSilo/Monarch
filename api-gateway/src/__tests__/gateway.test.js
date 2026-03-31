@@ -17,3 +17,15 @@ describe('GET /unknown-route', () => {
     expect(res.body.success).toBe(false);
   });
 });
+
+describe('GET /docs/services', () => {
+  it('returns gateway service docs endpoints including orders and notifications', async () => {
+    const res = await request(app).get('/docs/services');
+    expect(res.status).toBe(200);
+    expect(res.body.gateway).toBe('/docs');
+    expect(typeof res.body.auth).toBe('string');
+    expect(typeof res.body.inventory).toBe('string');
+    expect(typeof res.body.orders).toBe('string');
+    expect(typeof res.body.notifications).toBe('string');
+  });
+});
